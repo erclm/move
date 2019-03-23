@@ -14,8 +14,8 @@ echo "connecting to mc$1.ggservers.com.."
 ## zip
 ssh root@mc$1.ggservers.com /bin/bash << EOF
   cd /home/minecraft/multicraft/servers/
-	ls server$3
+  ls server$3
   zip -r server$4.zip server$3
 EOF
 
-scp 
+scp -r root@mc$1.ggservers.com:/home/minecraft/multicraft/servers/server$4.zip root@$2.ggn.io:/home/minecraft/multicraft/servers/
