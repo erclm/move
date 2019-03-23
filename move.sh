@@ -33,7 +33,7 @@ EOF
 echo "copying zip to new node.."
 scp -r root@mc$1.ggservers.com:/home/minecraft/multicraft/servers/server$4.zip root@$2.ggn.io:/home/minecraft/multicraft/servers/
 
-echo "applying changed to new node.."
+echo "applying changes to new node.."
 ssh root@$2.ggn.io /bin/bash << EOF
   cd /home/minecraft/multicraft/servers
   rm -rf server$4
