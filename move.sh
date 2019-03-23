@@ -7,10 +7,15 @@
 
 ## new nodes denoted as d2~d4
 ## ssh, zip, exit, scp, scp, ssh, unzip, chown -R, chmod -R, exit
+## usage: ./move.sh oldPanelID newNodeName oldServerID newServerID
+## usage example: ./move.sh 103 d2 1034 4
 
-## Testing remote
 echo "connecting to mc$1.ggservers.com.."
+## zip
 ssh root@mc$1.ggservers.com /bin/bash << EOF
-        ls;
-	pwd
+  cd /home/minecraft/multicraft/servers/
+	ls server$3
+  zip -r server$4.zip server$3
 EOF
+
+scp 
