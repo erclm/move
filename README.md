@@ -11,3 +11,5 @@ operations: ssh, zip, exit, scp, scp, ssh, unzip, chown -R, chmod -R, exit
 - now keeps old files, fixed authentication issues
 ### 1.2
 - renamed zipped file
+### 1.3
+- no chmod

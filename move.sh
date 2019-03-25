@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # script by eric lim
-# ver. 1.2
+# ver. 1.3
 
 ### $1 = from host
 ### $2 = to host
@@ -28,13 +28,10 @@ echo "*** connecting to mc$1.ggservers.com.."
 ## zip
 ssh root@mc$1.ggservers.com /bin/bash << EOF
   cd /home/minecraft/multicraft/servers/
-  echo "* cleaning up server$3.."
   rm -rf server$3/*.zip
   rm -rf server$3/*.log
   rm -rf server$3/logs
   rm -rf server$3/crash-reports
-  ls server$3
-  echo "* zipping.."
   mv server$3 moving
   zip -r moving.zip moving
   mv moving server$3
@@ -48,17 +45,13 @@ echo "*** applying changes to new node.."
 ssh root@$2.ggn.io /bin/bash << EOF
   cd /home/minecraft/multicraft/servers
   rm -rf server$4
-  echo "* unzipping.."
   unzip moving.zip
   mv moving server$4
-  echo "* setting permissions.."
   chown -R mc$4:mc$4 server$4
-  chmod -R 700 server$4
-  echo "* cleaning up.."
   rm -rf moving.zip
   ls server$4
 EOF
-
+echo "*** done migrating."
 echo "*** removing old files.."
 ssh root@mc$1.ggservers.com /bin/bash << EOF
   cd /home/minecraft/multicraft/servers/
