@@ -48,6 +48,7 @@ ssh root@$2.ggn.io /bin/bash << EOF
   rm -rf server$4
   echo "* unzipping.."
   unzip server$4.zip
+  mv server$3 server$4
   echo "* setting permissions.."
   chown -R mc$4:mc$4 server$4
   chmod -R 700 server$4
